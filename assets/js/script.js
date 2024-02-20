@@ -11,12 +11,16 @@ form.addEventListener("submit", function (event) {
   const value = document.getElementById("value");
   let = "";
 
+  value.classList.add("attention");
+
   document.getElementById("infos").classList.remove("hidden");
 
   if (bmi < 18.5) {
     description = "Poxa, você está abaixo do peso!";
   } else if (bmi >= 18.5 && bmi <= 25) {
     description = "Parabéns!! Você está no peso ideal!";
+    value.classList.remove("attention");
+    value.classList.add("normal");
   } else if (bmi > 25 && bmi <= 30) {
     description = "Comece a se cuidar, você está com sobrepeso!";
   } else if (bmi > 30 && bmi <= 35) {
@@ -29,5 +33,5 @@ form.addEventListener("submit", function (event) {
 
   value.textContent = bmi.replace(".", ",");
 
-  document.getElementById("description").textContent += description;
+  document.getElementById("description").textContent = description;
 });
